@@ -20,6 +20,13 @@ public class InventoryController {
         return ResponseEntity.ok(service.list());
     }
 
+    @GetMapping("/heavy")
+    public ResponseEntity<Void> heavy(@RequestParam("ms") Long ms){
+        service.heavyProcess(ms);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     public ResponseEntity<Void> save(@RequestBody Inventory inventory) {
         service.save(inventory);
